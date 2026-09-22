@@ -20,6 +20,12 @@ features such as native bitwise syntax, integer division, 64-bit Lua integers,
 `<const>`, `<close>`, and Lua 5.5 GC controls are outside this runtime contract.
 The Java garbage collector still owns runtime object lifetimes.
 
+The package-private coroutine helper is named `YieldFunction` so modern javac
+does not warn about the restricted type name `yield`. Its Lua registration
+remains `coroutine.yield`; public Java declarations and coroutine behavior are
+unchanged. Inherited deprecation and unchecked-operation notes are separate
+compiler diagnostics and are not suppressed by this rename.
+
 ## Compilation and runtime
 
 `LuaC` selects the original `LexState` for names ending in `.lua` and
