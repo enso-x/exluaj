@@ -29,14 +29,14 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Vector;
 
-import org.luaj.vm2.Globals;
-import org.luaj.vm2.Lua;
-import org.luaj.vm2.LuaTable;
-import org.luaj.vm2.LuaValue;
-import org.luaj.vm2.Print;
-import org.luaj.vm2.Varargs;
-import org.luaj.vm2.lib.jse.JsePlatform;
-import org.luaj.vm2.luajc.LuaJC;
+import io.ensox.exlua.vm2.Globals;
+import io.ensox.exlua.vm2.Lua;
+import io.ensox.exlua.vm2.LuaTable;
+import io.ensox.exlua.vm2.LuaValue;
+import io.ensox.exlua.vm2.Print;
+import io.ensox.exlua.vm2.Varargs;
+import io.ensox.exlua.vm2.lib.jse.JsePlatform;
+import io.ensox.exlua.vm2.luajc.LuaJC;
 
 
 /**

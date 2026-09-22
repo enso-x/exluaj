@@ -62,15 +62,15 @@
 		<delete dir="${instrumented.dir}" failonerror="no"/>
 		<cobertura-instrument datafile="${cobertura.serfile}" todir="${instrumented.dir}">
 			<fileset dir="${classes.dir}">
-				<include name="org/luaj/vm2/*.class" />
-				<include name="org/luaj/vm2/lib/*.class" />
-				<include name="org/luaj/vm2/lib/jse/*.class" />
-				<include name="org/luaj/vm2/lib/jme/*.class" />
-				<include name="org/luaj/vm2/compiler/*.class" />
-				<include name="org/luaj/vm2/luajc/*.class" />
-				<include name="org/luaj/vm2/lua2java/*.class" />
-				<include name="org/luaj/vm2/parser/*.class" />
-				<include name="org/luaj/vm2/ast/*.class" />
+				<include name="io/ensox/exlua/vm2/*.class" />
+				<include name="io/ensox/exlua/vm2/lib/*.class" />
+				<include name="io/ensox/exlua/vm2/lib/jse/*.class" />
+				<include name="io/ensox/exlua/vm2/lib/jme/*.class" />
+				<include name="io/ensox/exlua/vm2/compiler/*.class" />
+				<include name="io/ensox/exlua/vm2/luajc/*.class" />
+				<include name="io/ensox/exlua/vm2/lua2java/*.class" />
+				<include name="io/ensox/exlua/vm2/parser/*.class" />
+				<include name="io/ensox/exlua/vm2/ast/*.class" />
 				<exclude name="**/*Test*.class" />
 			</fileset>
 		</cobertura-instrument>
@@ -84,13 +84,13 @@
 			<classpath location="${classes.dir}" />
 			<classpath refid="cobertura.classpath" />
 			<classpath location="test/lua" />
-			<classpath location="test/junit/org/luaj/vm2/compiler" />
-			<classpath location="test/junit/org/luaj/vm2/vm1" />
+			<classpath location="test/junit/io/ensox/exlua/vm2/compiler" />
+			<classpath location="test/junit/io/ensox/exlua/vm2/vm1" />
 		    <classpath path="lib/bcel-5.2.jar" />
 			<formatter type="xml" />
 			<batchtest todir="${reports.xml.dir}">
 				<fileset dir="test/junit">
-					<include name="org/luaj/vm2/AllTests.java" />
+					<include name="io/ensox/exlua/vm2/AllTests.java" />
 				</fileset>
 			</batchtest>
 		</junit>

@@ -1,7 +1,7 @@
-import org.luaj.vm2.*;
-import org.luaj.vm2.compiler.LuaC;
-import org.luaj.vm2.lib.*;
-import org.luaj.vm2.lib.jse.*;
+import io.ensox.exlua.vm2.*;
+import io.ensox.exlua.vm2.compiler.LuaC;
+import io.ensox.exlua.vm2.lib.*;
+import io.ensox.exlua.vm2.lib.jse.*;
 
 /** Simple program that illustrates basic sand-boxing of client scripts
  * in a server environment.

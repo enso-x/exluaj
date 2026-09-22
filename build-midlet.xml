@@ -80,7 +80,7 @@
 			-microedition
 
 			-keep public class SampleMIDlet			
-			-keep public class * extends org.luaj.vm2.LuaValue
+			-keep public class * extends io.ensox.exlua.vm2.LuaValue
 		</proguard>		 
 	</target>
 		

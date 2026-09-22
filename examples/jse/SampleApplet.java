@@ -3,22 +3,22 @@ import java.awt.Graphics;
 import java.io.InputStream;
 import java.net.URL;
 
-import org.luaj.vm2.Globals;
-import org.luaj.vm2.LoadState;
-import org.luaj.vm2.LuaValue;
-import org.luaj.vm2.compiler.LuaC;
-import org.luaj.vm2.lib.Bit32Lib;
-import org.luaj.vm2.lib.CoroutineLib;
-import org.luaj.vm2.lib.PackageLib;
-import org.luaj.vm2.lib.ResourceFinder;
-import org.luaj.vm2.lib.StringLib;
-import org.luaj.vm2.lib.TableLib;
-import org.luaj.vm2.lib.jse.CoerceJavaToLua;
-import org.luaj.vm2.lib.jse.JseBaseLib;
-import org.luaj.vm2.lib.jse.JseIoLib;
-import org.luaj.vm2.lib.jse.JseMathLib;
-import org.luaj.vm2.lib.jse.JseOsLib;
-import org.luaj.vm2.lib.jse.LuajavaLib;
+import io.ensox.exlua.vm2.Globals;
+import io.ensox.exlua.vm2.LoadState;
+import io.ensox.exlua.vm2.LuaValue;
+import io.ensox.exlua.vm2.compiler.LuaC;
+import io.ensox.exlua.vm2.lib.Bit32Lib;
+import io.ensox.exlua.vm2.lib.CoroutineLib;
+import io.ensox.exlua.vm2.lib.PackageLib;
+import io.ensox.exlua.vm2.lib.ResourceFinder;
+import io.ensox.exlua.vm2.lib.StringLib;
+import io.ensox.exlua.vm2.lib.TableLib;
+import io.ensox.exlua.vm2.lib.jse.CoerceJavaToLua;
+import io.ensox.exlua.vm2.lib.jse.JseBaseLib;
+import io.ensox.exlua.vm2.lib.jse.JseIoLib;
+import io.ensox.exlua.vm2.lib.jse.JseMathLib;
+import io.ensox.exlua.vm2.lib.jse.JseOsLib;
+import io.ensox.exlua.vm2.lib.jse.LuajavaLib;
 
 /**
  * Simple Applet that forwards Applet lifecycle events to a lua script.

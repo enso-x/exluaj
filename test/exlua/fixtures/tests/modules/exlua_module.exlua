@@ -1,0 +1,2 @@
+local sum = (a, b = 2) => a + b
+return sum(a = 40)

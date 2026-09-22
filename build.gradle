@@ -1,0 +1,70 @@
+plugins {
+    id 'java-library'
+    id 'maven-publish'
+}
+
+group = 'io.ensox.exlua'
+version = '3.0.1-exlua.1'
+
+repositories { mavenCentral() }
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+    withSourcesJar()
+}
+
+sourceSets {
+    main {
+        java.srcDirs = ['src/core', 'src/jse']
+        java.include '**/*.java'
+        resources { srcDir 'src/jse'; include 'META-INF/**' }
+    }
+    test {
+        java.srcDirs = ['test/exlua', 'test/junit']
+        java.exclude '**/AllTests.java', '**/ScriptDrivenTest.java', '**/CompatibiltyTest.java',
+            '**/ErrorsTest.java', '**/MathLibTest.java', '**/compiler/AbstractUnitTests.java',
+            '**/compiler/CompilerUnitTests.java', '**/compiler/RegressionTests.java',
+            '**/compiler/LuaParserTests.java', '**/lib/jse/OsLibTest.java'
+    }
+}
+
+dependencies {
+    // LuaJC is an optional API; the interpreter does not load BCEL.
+    compileOnly 'org.apache.bcel:bcel:5.2'
+    testImplementation 'junit:junit:4.13.2'
+    testImplementation 'org.luaj:luaj-jse:3.0.1'
+    testRuntimeOnly 'org.apache.bcel:bcel:5.2'
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+    options.compilerArgs += ['-Xlint:-options', '-Xlint:-removal']
+}
+
+test { useJUnit() }
+
+jar { from('LICENSE') { into 'META-INF/licenses/exluaj' } }
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+            pom {
+                name = 'ExLuaJ'
+                description = 'ExLua language extensions on the LuaJ 3.0.1 JVM runtime'
+                url = 'https://github.com/enso-x/exluaj'
+                licenses { license { name = 'MIT'; url = 'https://opensource.org/license/mit' } }
+                scm { url = 'https://github.com/enso-x/exluaj' }
+                withXml {
+                    def dependencies = asNode().appendNode('dependencies')
+                    def bcel = dependencies.appendNode('dependency')
+                    bcel.appendNode('groupId', 'org.apache.bcel')
+                    bcel.appendNode('artifactId', 'bcel')
+                    bcel.appendNode('version', '5.2')
+                    bcel.appendNode('optional', 'true')
+                }
+            }
+        }
+    }
+}

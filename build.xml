@@ -126,13 +126,13 @@
 				version="true"
 				use="true"
 				windowtitle="Luaj API">
-		    <fileset dir="src/core" defaultexcludes="yes" includes="org/luaj/vm2/*.java,org/luaj/vm2/compiler/LuaC.java,org/luaj/vm2/lib/*.java"/>
-		    <fileset dir="src/jse" defaultexcludes="yes" includes="org/luaj/vm2/lib/jse/*.java,org/luaj/vm2/luajc/LuaJC.java,org/luaj/vm2/server/*.java"/>
-		    <fileset dir="src/jme" defaultexcludes="yes" includes="org/luaj/vm2/lib/jme/*.java"/>
+		    <fileset dir="src/core" defaultexcludes="yes" includes="io/ensox/exlua/vm2/*.java,io/ensox/exlua/vm2/compiler/LuaC.java,io/ensox/exlua/vm2/lib/*.java"/>
+		    <fileset dir="src/jse" defaultexcludes="yes" includes="io/ensox/exlua/vm2/lib/jse/*.java,io/ensox/exlua/vm2/luajc/LuaJC.java,io/ensox/exlua/vm2/server/*.java"/>
+		    <fileset dir="src/jme" defaultexcludes="yes" includes="io/ensox/exlua/vm2/lib/jme/*.java"/>
 			<doctitle><![CDATA[<h1>Luaj API</h1>]]></doctitle>
 			<bottom><![CDATA[<i>Copyright &#169; 2007-2015 Luaj.org. All Rights Reserved.</i>]]></bottom>
 			<tag name="todo" scope="all" description="To do:"/>
-			<group title="Core VM" packages="org.luaj.vm.*"/>
+			<group title="Core VM" packages="io.ensox.exlua.vm.*"/>
 			<link offline="true" href="http://sourceforge.net/projects/luaj/" packagelistLoc="C:\tmp"/>
 			<link href="http://sourceforge.net/projects/luaj/"/>
 		</javadoc>
@@ -196,7 +196,7 @@
 		<exec executable="mvn">
 			<arg value="install:install-file"/>
 			<arg value="-Dfile=${jar.name.jse}"/>
-			<arg value="-DgroupId=org.luaj"/>
+			<arg value="-DgroupId=io.ensox.exlua"/>
 			<arg value="-DartifactId=luaj-jse"/>
 			<arg value="-Dversion=${version}"/>
 			<arg value="-Dpackaging=jar"/>

@@ -1,8 +1,8 @@
 package acme;
 
-import org.luaj.vm2.Globals;
-import org.luaj.vm2.LuaValue;
-import org.luaj.vm2.lib.jse.JsePlatform;
+import io.ensox.exlua.vm2.Globals;
+import io.ensox.exlua.vm2.LuaValue;
+import io.ensox.exlua.vm2.lib.jse.JsePlatform;
 
 /**
  * Sample source file for a maven project that depends on luaj.

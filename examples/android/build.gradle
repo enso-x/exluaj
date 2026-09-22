@@ -29,9 +29,10 @@ android {
 }
 
 repositories {
+	mavenLocal()
 	mavenCentral()
 }
 
 dependencies {
-	compile 'org.luaj:luaj-jse:3.0.1'
+	compile 'io.ensox.exlua:exluaj-jse:3.0.1-exlua.1'
 }

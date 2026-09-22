@@ -1,7 +1,7 @@
-package org.luaj.vm2.android;
+package io.ensox.exlua.vm2.android;
 
-import org.luaj.vm2.LuaValue;
-import org.luaj.vm2.lib.jse.CoerceJavaToLua;
+import io.ensox.exlua.vm2.LuaValue;
+import io.ensox.exlua.vm2.lib.jse.CoerceJavaToLua;
 
 import android.app.Activity;
 import android.os.Bundle;

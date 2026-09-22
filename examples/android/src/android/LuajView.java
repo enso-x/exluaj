@@ -1,12 +1,12 @@
-package org.luaj.vm2.android;
+package io.ensox.exlua.vm2.android;
 
 import java.io.InputStream;
 
-import org.luaj.vm2.Globals;
-import org.luaj.vm2.LuaValue;
-import org.luaj.vm2.lib.ResourceFinder;
-import org.luaj.vm2.lib.jse.CoerceJavaToLua;
-import org.luaj.vm2.lib.jse.JsePlatform;
+import io.ensox.exlua.vm2.Globals;
+import io.ensox.exlua.vm2.LuaValue;
+import io.ensox.exlua.vm2.lib.ResourceFinder;
+import io.ensox.exlua.vm2.lib.jse.CoerceJavaToLua;
+import io.ensox.exlua.vm2.lib.jse.JsePlatform;
 
 import android.content.Context;
 import android.graphics.Canvas;

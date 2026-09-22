@@ -1,7 +1,7 @@
-import org.luaj.vm2.Globals;
-import org.luaj.vm2.LuaThread;
-import org.luaj.vm2.LuaValue;
-import org.luaj.vm2.lib.jse.JsePlatform;
+import io.ensox.exlua.vm2.Globals;
+import io.ensox.exlua.vm2.LuaThread;
+import io.ensox.exlua.vm2.LuaValue;
+import io.ensox.exlua.vm2.lib.jse.JsePlatform;
 
 /** Example that continually launches coroutines, and illustrates how to make 
 * sure the orphaned coroutines are cleaned up properly.
@@ -43,7 +43,7 @@ public class CollectingOrphanedCoroutines {
 		// Globals globals = JsePlatform.debugGlobals();
 		
 		// Should work with plain compiler or lua-to-Java compiler.
-		// org.luaj.vm2.luajc.LuaJC.install(globals);;
+		// io.ensox.exlua.vm2.luajc.LuaJC.install(globals);;
 
 		// Load and run the script, which launches coroutines over and over forever.
 		LuaValue chunk = globals.load(script, "main");

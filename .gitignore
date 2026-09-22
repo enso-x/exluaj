@@ -1,7 +1,7 @@
 bin/
 target/
 build/
-lib/
+/lib/
 jit/
 *.ser
 *.gz
@@ -13,3 +13,8 @@ jit/
 *.zip
 docs
 *.0
+
+.gradle/
+!gradle/wrapper/gradle-wrapper.jar
+!docs/
+!test/exlua/**/*.lua

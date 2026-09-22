@@ -11,8 +11,8 @@ import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
 import javax.script.SimpleBindings;
 
-import org.luaj.vm2.LuaValue;
-import org.luaj.vm2.lib.OneArgFunction;
+import io.ensox.exlua.vm2.LuaValue;
+import io.ensox.exlua.vm2.lib.OneArgFunction;
 
 /** Sample code that uses the JSE-223 pluggable scripting language interface
  * to instantiate and use luaj. 
@@ -23,9 +23,9 @@ import org.luaj.vm2.lib.OneArgFunction;
  * <p>All features should be supported including compiled scripts. 
  * 
  * <p>Configuration is via system properties:
- * <ul><li><b>"org.luaj.luajc"</b> - set to "true" to use the LuaJC lua-to-Java-bytecode compiling.  
+ * <ul><li><b>"io.ensox.exlua.luajc"</b> - set to "true" to use the LuaJC lua-to-Java-bytecode compiling.
  * Requires the bcel library to be on the class path.
- * </li><li><b>"org.luaj.debug"</b> - set to "true" to load the debug library, 
+ * </li><li><b>"io.ensox.exlua.debug"</b> - set to "true" to load the debug library,
  * which may provide better stack traces for closures.
  * </li></ul>
  * 
@@ -34,17 +34,17 @@ import org.luaj.vm2.lib.OneArgFunction;
 public class ScriptEngineSample {
     
     public static void main(String [] args) {
-    	// Set the property 'org.luaj.debug' before getting the engine to get 
+        // Set the property 'io.ensox.exlua.debug' before getting the engine to get
     	// the debug libraries, which will be slower, but may provide stack traces
     	// when luaJC is not used.  
-    	// This can also be set on the command line using -Dorg.luaj.debug=true
-    	// System.setProperty("org.luaj.debug", "true");
+        // This can also be set on the command line using -Dio.ensox.exlua.debug=true
+        // System.setProperty("io.ensox.exlua.debug", "true");
 
-        // Set the property 'org.luaj.luajc' before getting the engine to enable 
+        // Set the property 'io.ensox.exlua.luajc' before getting the engine to enable
     	// the lua-to-java bytecode compiler, which requires the bcel library 
     	// to be on the class path.
-    	// This can also be set on the command line using -Dorg.luaj.luajc=true
-        // org.luaj.vm2.luajc.LuaJC.install();
+        // This can also be set on the command line using -Dio.ensox.exlua.luajc=true
+        // io.ensox.exlua.vm2.luajc.LuaJC.install();
     	
         ScriptEngineManager sem = new ScriptEngineManager();
         ScriptEngine e = sem.getEngineByName("luaj");

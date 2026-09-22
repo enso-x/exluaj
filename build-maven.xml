@@ -10,7 +10,7 @@
 			<mkdir dir="build/maven-${version}"/>
 			 <echo file="build/maven-${version}/luaj-@{platform}-${version}@{snapshot}.pom"><![CDATA[<project>
   <modelVersion>4.0.0</modelVersion>
-  <groupId>org.luaj</groupId>
+  <groupId>io.ensox.exlua</groupId>
   <artifactId>luaj-]]>@{platform}<![CDATA[</artifactId>
   <version>]]>${version}@{snapshot}<![CDATA[</version>
   <packaging>jar</packaging>
@@ -79,9 +79,9 @@
 					use="true"
 					windowtitle="Luaj API">
 			    <fileset dir="build/maven-${version}/sources-@{platform}">
-					<include name="org/luaj/vm/*.java"/>
-					<include name="org/luaj/vm2/*.java"/>
-					<include name="org/luaj/vm2/server/*.java"/>
+					<include name="io/ensox/exlua/vm/*.java"/>
+					<include name="io/ensox/exlua/vm2/*.java"/>
+					<include name="io/ensox/exlua/vm2/server/*.java"/>
 					<include name="**/LuaC.java"/>
 					<include name="**/LuaJC.java"/>
 					<include name="**/lib/*/*.java"/>

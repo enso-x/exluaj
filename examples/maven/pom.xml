@@ -9,9 +9,9 @@
   <url>http://maven.apache.org</url>
   <dependencies>
     <dependency>
-      <groupId>org.luaj</groupId>
-      <artifactId>luaj-jse</artifactId>
-      <version>3.0.1</version>
+      <groupId>io.ensox.exlua</groupId>
+      <artifactId>exluaj-jse</artifactId>
+      <version>3.0.1-exlua.1</version>
     </dependency>
     <dependency>
       <groupId>junit</groupId>

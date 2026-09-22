@@ -3,8 +3,8 @@
 import javax.microedition.midlet.MIDlet;
 import javax.microedition.midlet.MIDletStateChangeException;
 
-import org.luaj.vm2.*;
-import org.luaj.vm2.lib.jme.JmePlatform;
+import io.ensox.exlua.vm2.*;
+import io.ensox.exlua.vm2.lib.jme.JmePlatform;
 
 
 public class SampleMIDlet extends MIDlet {

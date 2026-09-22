@@ -1,0 +1,115 @@
+local function check(name, actual, expected)
+    if actual ~= expected then
+        error(name .. ": expected " .. tostring(expected) .. ", got " .. tostring(actual))
+    end
+    print("ok - " .. name .. " = " .. tostring(actual))
+end
+
+-- Compound assignment: +=, -=, *=, /=
+local score = 10
+score += 5
+score -= 3
+score *= 2
+score /= 4
+check("compound assignment", score, 6)
+
+local player = { hp = 100 }
+player.hp -= 25
+check("field compound assignment", player.hp, 75)
+
+-- Nil coalescing: only nil falls back, false is preserved.
+local fallbackName = nil ?? "Unknown"
+local explicitFalse = false ?? true
+check("nil coalescing fallback", fallbackName, "Unknown")
+check("nil coalescing keeps false", explicitFalse, false)
+
+-- Optional chaining: missing fields safely become nil.
+local user = {
+    profile = {
+        name = "Ada",
+        getName = () => "Ada Lovelace"
+    }
+}
+local missingUser = nil
+check("optional field", user?.profile?.name, "Ada")
+check("optional missing field", user?.settings?.theme ?? "default", "default")
+check("optional nil receiver", missingUser?.profile?.name ?? "nobody", "nobody")
+check("optional call", user?.profile?.getName?.(), "Ada Lovelace")
+
+-- Lambda expressions.
+local double = value => value * 2
+local sum = (a, b) => a + b
+local blockLambda = (x) => do
+    local y = x * 2
+    return y + 1
+end
+
+check("single-parameter lambda", double(7), 14)
+check("parenthesized lambda", sum(3, 4), 7)
+check("block lambda", blockLambda(5), 11)
+
+-- Pipeline operator: the left value becomes the first argument.
+local add = (a, b) => a + b
+local pipelineValue = 10 |> add(5) |> double
+check("pipeline call", pipelineValue, 30)
+
+-- Pipeline as a statement.
+local assignedPipeline = 5 |> double
+check("pipeline assignment expression", assignedPipeline, 10)
+
+123 |> print
+"pipeline string statement" |> print
+{1, 2} |> print
+false |> print
+1 + 2 |> print
+"1" .. "2" .. "3" |> print
+
+-- Method pipeline: value |> :method(args) is value:method(args).
+local box = {
+    value = 2,
+    add = (self, amount) => do
+        self.value += amount
+        return self
+    end,
+    multiply = (self, factor) => do
+        self.value *= factor
+        return self
+    end
+}
+
+box |> :add(3) |> :multiply(4)
+check("method pipeline", box.value, 20)
+
+local function rectangle(width, height = 10)
+    return width * height
+end
+check("named ordinary function", rectangle(height = 20, width = 5), 100)
+local scale = (value, factor = 2) => value * factor
+check("default lambda parameter", scale(value = 5), 10)
+check("named pipeline argument", 5 |> scale(factor = 3), 15)
+
+-- Classes are tables; decorators can preserve named argument signatures.
+local traced = fn => wraps(fn, (...) => do return fn(...) end)
+local class Player
+    constructor(name, hp = 100)
+        self.name, self.hp = name, hp
+        self.inventory = {}
+    end
+    @traced
+    function damage(amount)
+        self.hp -= amount
+        return self.hp
+    end
+    static kind = "player"
+end
+local class Admin extends Player
+    function describe() return f"{self.name}: {self.hp} HP" end
+end
+local admin = Admin.new(name = "Alex")
+check("class named method", admin:damage(amount = 15), 85)
+check("inherited constructor and template", admin:describe(), "Alex: 85 HP")
+local {name: playerName, hp} = admin
+local [first, second] = {playerName, hp}
+check("destructuring fields and positions", f"{first}/{second}", "Alex/85")
+
+print("ExLua feature examples completed.")

@@ -53,7 +53,7 @@
 			</java>
 			<jar destfile="build/@{luaprog}.jar">
 				<fileset dir="build/@{luaprog}/class"/>
-				<zipfileset includes="org/luaj/vm2/*.class,org/luaj/vm2/lib/*.class,org/luaj/vm2/lib/jse/*.class,org/luaj/vm2/compiler/*.class" src="luaj-jse-${version}.jar" />
+				<zipfileset includes="io/ensox/exlua/vm2/*.class,io/ensox/exlua/vm2/lib/*.class,io/ensox/exlua/vm2/lib/jse/*.class,io/ensox/exlua/vm2/compiler/*.class" src="luaj-jse-${version}.jar" />
 				<manifest>
 					<attribute name="Main-Class" value="@{luaprog}" />
 				</manifest>

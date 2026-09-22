@@ -1,6 +1,6 @@
-import org.luaj.vm2.LuaValue;
-import org.luaj.vm2.lib.OneArgFunction;
-import org.luaj.vm2.lib.TwoArgFunction;
+import io.ensox.exlua.vm2.LuaValue;
+import io.ensox.exlua.vm2.lib.OneArgFunction;
+import io.ensox.exlua.vm2.lib.TwoArgFunction;
 
 /**
  * Sample library that can be called via luaj's require() implementation.
