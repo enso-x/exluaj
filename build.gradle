@@ -68,3 +68,45 @@ publishing {
         }
     }
 }
+
+// Releases go to the static Maven repository enso-x/maven, served by GitHub Pages at
+// https://enso-x.github.io/maven/. `gradlew publishPages` writes into a local clone of it
+// (-PmavenRepo=<dir>, default ~/Projects/maven), commits and pushes. A released version is
+// never overwritten: consumers and their caches rely on it staying the same.
+def pagesRepo = file(providers.gradleProperty('mavenRepo')
+    .orElse(new File(System.getProperty('user.home'), 'Projects/maven').path).get())
+
+publishing {
+    repositories {
+        maven {
+            name = 'pages'
+            url = pagesRepo.toURI()
+        }
+    }
+}
+
+def releasedDir = new File(pagesRepo, "${project.group.replace('.', '/')}/${rootProject.name}/${project.version}")
+
+tasks.register('checkUnreleased') {
+    doLast {
+        if (!new File(pagesRepo, '.git').isDirectory()) throw new GradleException("No clone of enso-x/maven at $pagesRepo")
+        if (releasedDir.exists()) throw new GradleException("${project.version} is already released; bump the version")
+    }
+}
+tasks.matching { it.name == 'publishMavenJavaPublicationToPagesRepository' }.configureEach { dependsOn 'checkUnreleased', 'test' }
+
+tasks.register('publishPages') {
+    group = 'publishing'
+    description = 'Publishes to the enso-x/maven GitHub Pages repository and pushes it.'
+    dependsOn 'publishMavenJavaPublicationToPagesRepository'
+    doLast {
+        def git = { List<String> args ->
+            def process = (['git', '-C', pagesRepo.path] + args).execute()
+            process.waitForProcessOutput(System.out, System.err)
+            if (process.exitValue() != 0) throw new GradleException("git ${args.join(' ')} failed")
+        }
+        git(['add', '-A'])
+        git(['commit', '-m', "${project.group}:${rootProject.name}:${project.version}"])
+        git(['push'])
+    }
+}
